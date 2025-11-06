@@ -1,0 +1,37 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+LAYOUT_WITH_LEGEND()
+
+title System Context View: Agno Multi-Agent Platform
+
+' Users
+Person(ai_developer, "AI Developer", "Develops and deploys multi-agent systems using Agno framework. Writes Python code to create agents, teams, and workflows.")
+Person(end_user, "End User", "Interacts with AI agents through the AgentOS UI to get assistance, information, or complete tasks.")
+
+' Main System - Agno Platform
+System(agno_platform, "Agno Platform", "Multi-agent framework and runtime that enables developers to build, deploy, and manage AI agents with memory, knowledge, and tool integration. Includes:\n- Agno Framework (Python library)\n- AgentOS Runtime (FastAPI app)\n- AgentOS UI (Web interface)")
+
+' External Systems
+System_Ext(llm_providers, "LLM Provider Services", "Cloud-based AI model services (Anthropic Claude, OpenAI GPT, Google Gemini, etc.) that power the agent's language understanding and generation capabilities.")
+
+System_Ext(database_systems, "Database Systems", "Persistent storage systems (PostgreSQL, SQLite, MongoDB, Redis, etc.) for storing agent session history, user memories, conversation state, and workflow data.")
+
+System_Ext(mcp_servers, "MCP Servers", "Model Context Protocol servers that provide additional tools, resources, and capabilities to agents (e.g., Agno Docs MCP, filesystem access, web browsing).")
+
+System_Ext(external_tools, "External APIs & Tools", "Third-party services and APIs that agents can use as tools (DuckDuckGo search, HackerNews API, Slack, Discord, etc.).")
+
+System_Ext(vector_databases, "Vector Database Systems", "Specialized vector storage systems (LanceDB, Pinecone, Qdrant, etc.) for knowledge base and RAG (Retrieval-Augmented Generation) functionality.")
+
+' Relationships
+Rel(ai_developer, agno_platform, "Develops agents using", "Python SDK, CLI")
+Rel(end_user, agno_platform, "Interacts with agents via", "AgentOS UI (HTTPS), API endpoints")
+
+Rel(agno_platform, llm_providers, "Sends prompts and receives responses", "HTTPS/API")
+Rel(agno_platform, database_systems, "Reads/writes session data, memories, state", "SQL/NoSQL protocols")
+Rel(agno_platform, mcp_servers, "Connects to for tools and resources", "MCP Protocol (SSE/stdio)")
+Rel(agno_platform, external_tools, "Calls for data and actions", "HTTPS/API")
+Rel(agno_platform, vector_databases, "Stores and retrieves knowledge embeddings", "Native protocols/API")
+
+@enduml
+
