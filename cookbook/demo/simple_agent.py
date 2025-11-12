@@ -6,14 +6,14 @@ from agno.tools.duckduckgo import DuckDuckGoTools
 
 # ************* Create Agent *************
 simple_agent = Agent(
-    name="DeepSeek Agent",
-    model=DeepSeek(id="deepseek-chat"),  # Use DeepSeek class instead of OpenAIChat
+    name="DeepSeek Reasoner Agent",
+    model=DeepSeek(id="deepseek-reasoner"),  # Use DeepSeek R1 reasoning model
     db=SqliteDb(db_file="tmp/simple_agent.db"),
     tools=[DuckDuckGoTools()],  # Add search functionality
     add_history_to_context=True,
     num_history_runs=3,
     markdown=True,
-    instructions="You are a helpful AI assistant with web search access. Use search when you need current information.",
+    instructions="You are a helpful AI assistant with reasoning capabilities and web search access. Think step-by-step and use search when you need current information.",
 )
 
 # ************* Create AgentOS *************
