@@ -1,20 +1,19 @@
 from agno.agent import Agent
 from agno.db.sqlite import SqliteDb
-from agno.models.anthropic import Claude
+from agno.models.deepseek import DeepSeek
 from agno.os import AgentOS
-from agno.tools.mcp import MCPTools
+from agno.tools.duckduckgo import DuckDuckGoTools
 
 # ************* Create Agent *************
 simple_agent = Agent(
-    name="Simple Agent",
-    model=Claude(id="claude-sonnet-4-5"),
+    name="DeepSeek Agent",
+    model=DeepSeek(id="deepseek-chat"),  # Use DeepSeek class instead of OpenAIChat
     db=SqliteDb(db_file="tmp/simple_agent.db"),
-    tools=[MCPTools(transport="streamable-http", url="https://docs.agno.com/mcp")],
+    tools=[DuckDuckGoTools()],  # Add search functionality
     add_history_to_context=True,
-    add_datetime_to_context=True,
-    enable_agentic_memory=True,
     num_history_runs=3,
     markdown=True,
+    instructions="You are a helpful AI assistant with web search access. Use search when you need current information.",
 )
 
 # ************* Create AgentOS *************
