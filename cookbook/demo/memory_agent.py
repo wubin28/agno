@@ -1,12 +1,12 @@
 from textwrap import dedent
 
 from agno.agent import Agent
-from agno.models.anthropic import Claude
+from agno.models.deepseek import DeepSeek
 from db import db
 
 memory_manager = Agent(
     name="Memory Manager",
-    model=Claude(id="claude-sonnet-4-5"),
+    model=DeepSeek(id="deepseek-chat"),
     description=dedent("""\
         You are the Memory Manager — an AI Agent responsible for analyzing, maintaining,
         and improving user memories within the Agno system.

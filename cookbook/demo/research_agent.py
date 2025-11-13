@@ -2,14 +2,14 @@ from datetime import datetime
 from textwrap import dedent
 
 from agno.agent import Agent
-from agno.models.anthropic import Claude
+from agno.models.deepseek import DeepSeek
 from agno.tools.exa import ExaTools
 from db import db
 
 research_agent = Agent(
     name="Research Agent",
     role="Assist with research and information synthesis",
-    model=Claude(id="claude-sonnet-4-5"),
+    model=DeepSeek(id="deepseek-chat"),
     tools=[
         ExaTools(
             start_published_date=datetime.now().strftime("%Y-%m-%d"),

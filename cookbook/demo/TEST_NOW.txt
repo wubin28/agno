@@ -1,0 +1,35 @@
+==========================================
+🚀 立即测试新功能
+==========================================
+
+1. 确保你在 cookbook/demo 目录：
+   cd /home/ben/OOR/katas/agno/cookbook/demo
+
+2. 激活虚拟环境：
+   source ../../.demoenv/bin/activate
+
+3. 清除环境变量（测试交互式输入）：
+   unset DEEPSEEK_API_KEY
+
+4. 运行程序：
+   python run.py
+
+5. 当提示时，输入你的 DeepSeek API key
+   - 输入会显示为星号或不可见
+   - 输入完成后按 Enter
+
+6. 对于 OpenAI API key，可以：
+   - 输入 'y' 并提供 key（推荐）
+   - 输入 'n' 跳过（部分功能可能不可用）
+
+7. 访问 http://localhost:7777
+
+8. 选择 "Agno Knowledge Agent" 并发送：
+   "What is the AgentOS?"
+
+预期结果：
+✓ 收到关于 AgentOS 的响应
+✗ 不应该出现 403 错误
+✗ 不应该出现 "DEEPSEEK_API_KEY not set" 错误
+
+==========================================

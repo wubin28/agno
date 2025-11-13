@@ -1,13 +1,13 @@
 from textwrap import dedent
 
 from agno.agent import Agent
-from agno.models.anthropic import Claude
+from agno.models.deepseek import DeepSeek
 from agno.tools.youtube import YouTubeTools
 from db import db
 
 youtube_agent = Agent(
     name="YouTube Agent",
-    model=Claude(id="claude-sonnet-4-5"),
+    model=DeepSeek(id="deepseek-chat"),
     tools=[YouTubeTools()],
     description=dedent("""\
         You are the YouTube Agent — an AI Agent that analyzes YouTube videos

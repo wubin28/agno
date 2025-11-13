@@ -1,7 +1,7 @@
 from textwrap import dedent
 
 from agno.agent import Agent
-from agno.models.anthropic import Claude
+from agno.models.deepseek import DeepSeek
 from agno.tools.mcp import MCPTools
 from db import db
 
@@ -59,7 +59,7 @@ instructions = dedent(
 # ============================================================================
 agno_mcp_agent = Agent(
     name="Agno MCP Agent",
-    model=Claude(id="claude-sonnet-4-5"),
+    model=DeepSeek(id="deepseek-chat"),
     tools=[MCPTools(transport="streamable-http", url="https://docs.agno.com/mcp")],
     description=description,
     instructions=instructions,

@@ -1,7 +1,7 @@
 from textwrap import dedent
 
 from agno.agent import Agent
-from agno.models.anthropic import Claude
+from agno.models.deepseek import DeepSeek
 from agno.tools.reasoning import ReasoningTools
 from agno.tools.yfinance import YFinanceTools
 from db import db
@@ -9,7 +9,7 @@ from db import db
 finance_agent = Agent(
     name="Finance Agent",
     role="Handle financial data requests and market analysis",
-    model=Claude(id="claude-sonnet-4-5"),
+    model=DeepSeek(id="deepseek-chat"),
     tools=[YFinanceTools(), ReasoningTools()],
     description=dedent("""\
         You are the Finance Agent — a data-driven analyst who retrieves market data and fundamentals,

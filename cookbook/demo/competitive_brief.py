@@ -2,7 +2,7 @@ import asyncio
 from datetime import datetime
 
 from agno.agent import Agent
-from agno.models.anthropic import Claude
+from agno.models.deepseek import DeepSeek
 from agno.tools.exa import ExaTools
 from agno.workflow.step import Step
 from agno.workflow.workflow import Workflow
@@ -11,14 +11,14 @@ from db import db
 # =========================
 # CONFIG
 # =========================
-MODEL_ID = "claude-sonnet-4-5"
+MODEL_ID = "deepseek-chat"
 
 # =========================
 # AGENTS
 # =========================
 outline_planner = Agent(
     name="OutlinePlanner",
-    model=Claude(id=MODEL_ID),
+    model=DeepSeek(id=MODEL_ID),
     instructions=(
         "You normalize inputs for generating competitive briefs.\n"
         "- Extract vendor/company names mentioned by the user; dedupe and preserve input order.\n"
@@ -35,7 +35,7 @@ outline_planner = Agent(
 
 comparator = Agent(
     name="Comparator",
-    model=Claude(id=MODEL_ID),
+    model=DeepSeek(id=MODEL_ID),
     tools=[
         ExaTools(
             start_published_date=datetime.now().strftime("%Y-%m-%d"), type="keyword"

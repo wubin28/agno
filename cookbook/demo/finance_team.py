@@ -1,6 +1,6 @@
 from textwrap import dedent
 
-from agno.models.anthropic import Claude
+from agno.models.deepseek import DeepSeek
 from agno.team.team import Team
 from agno.tools.reasoning import ReasoningTools
 from db import db
@@ -9,7 +9,7 @@ from research_agent import research_agent
 
 finance_team = Team(
     name="Finance Team",
-    model=Claude(id="claude-sonnet-4-5"),
+    model=DeepSeek(id="deepseek-chat"),
     members=[finance_agent, research_agent],
     tools=[ReasoningTools(add_instructions=True)],
     description=dedent("""\
