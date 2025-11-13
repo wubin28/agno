@@ -75,7 +75,7 @@ instructions = dedent(
 # ============================================================================
 agno_knowledge_agent = Agent(
     name="Agno Knowledge Agent",
-    model=DeepSeek(id="deepseek-chat"),
+    model=DeepSeek(id="deepseek-reasoner"),
     knowledge=knowledge,
     description=description,
     instructions=instructions,
